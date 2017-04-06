@@ -130,6 +130,44 @@ questions:
    encryption and which are not?
 
 
+<a name="error-signing"></a>
+
+Authentication and Encryption of Error Responses
+------------------------------------------------
+
+*Server Authentication* and *Response Encryption* methods describe how *all*
+HTTP responses should be signed and encrypted. This includes error responses
+(responses with HTTP 4xx and HTTP 5xx status codes).
+
+Why it might be important to **encrypt** error responses?
+
+ * Non-encrypted responses can be overheard. If the error response may contain
+   private data, then it is important that only the requester can read this
+   data.
+
+ * Note, that using TLS is usually enough to protect response confidentiality.
+
+Why it might be important to **sign** error responses?
+
+ * So that the requester will be able to prove, that the server responded with
+   an error for his particular request. This non-repudiation might be relevant
+   in some cases.
+
+For these reasons:
+
+ * If you are a server implementer and you use particular security method for
+   signing and encryption your responses, then it is RECOMMENDED that you use
+   exactly the same method when you are responding with errors. If you are
+   unable to do so, then you MAY fall back to sending your error response over
+   regular TLS. You MUST NOT however send your error responses over completely
+   unprotected channel.
+
+ * The clients SHOULD be prepared for both cases. The servers MAY send their
+   error response bodies either encrypted or not encrypted; they MAY contain
+   a HTTP signature, or they may not. However, all such responses will be sent
+   over TLS (HTTPS).
+
+
 [discovery-api]: https://github.com/erasmus-without-paper/ewp-specs-api-discovery
 [develhub]: http://developers.erasmuswithoutpaper.eu/
 [statuses]: https://github.com/erasmus-without-paper/ewp-specs-management/blob/stable-v1/README.md#statuses
