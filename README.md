@@ -52,12 +52,16 @@ list of chapters on the [Developers' Page][develhub].
 
 ### Which should I implement?
 
-We currently require all servers to support a fixed set of security methods,
-for all APIs:
+This version of this document requires all servers to support a fixed set of
+security methods, for all APIs:
 
  * Servers MUST use [TLS Client Certificate method][cliauth-tlscert] for
-   authenticating clients. In case of some APIs, servers MAY also allow
-   [anonymous clients][cliauth-none].
+   authenticating clients.
+
+ * In case of some APIs, servers MAY also allow [anonymous
+   clients][cliauth-none]. The choice of whether to support anonymous clients
+   or not is made by the server implementers, and is declared in manifest
+   entries of certain APIs, which allow for this choice.
 
  * Clients MUST use [TLS Server Certificate method][srvauth-tlscert] for
    authenticating servers.
