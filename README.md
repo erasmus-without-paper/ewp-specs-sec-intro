@@ -11,7 +11,7 @@ messages exchanged.
 Introduction
 ------------
 
-This version (1.x.x) of this document described the **initial** way we wanted
+This version (1.x.x) of this document describes the **initial** way we wanted
 to handle authentication and security in EWP. We hoped that EWP will use TLS
 for all security purposes (server authentication, client authentication,
 encryption). This however
@@ -32,10 +32,10 @@ security aspects**:
  * request encryption,
  * response encryption.
 
-Each endpoint (also known as a "API URL") MUST support at least one "method"
-of covering **each** of those security aspects. This choice is currently fixed
-(see *Which should I implement?* section below), but this will change in the
-2.x.x version of this document.
+Each endpoint MUST support at least one method of covering **each** of
+these security aspects. This choice is currently fixed (see *Which should I
+implement?* section below), but this will change in the 2.x.x version of this
+document.
 
 
 <a name="standard-methods"></a>
@@ -43,17 +43,22 @@ of covering **each** of those security aspects. This choice is currently fixed
 Standard methods
 ----------------
 
+EWP designers provide a couple of standard methods of dealing with these
+security aspects. The number of these methods MAY grow in time, some methods
+also MAY get deprecated.
+
+
 ### Where are they defined?
 
-EWP documentation includes a couple of **standard methods** for
-request/response encryption and authentication. To see all of them, review the
-list of chapters on the [Developers' Page][develhub].
+Each is documented in its own repository. Look in the Table of Contents on the
+[Developers' Page][develhub].
 
 
-### Which should I implement?
+### Which of them am I required to support?
 
-This version of this document requires all servers to support a fixed set of
-security methods, for all APIs:
+If an API chooses to follow Authentication and Security guidelines described in
+this document, then implementers are required to support a fixed set of security
+methods, for all endpoints of this API:
 
  * Servers MUST use [TLS Client Certificate method][cliauth-tlscert] for
    authenticating clients.
@@ -78,10 +83,10 @@ way).
 About introducing new methods
 -----------------------------
 
-This section describes requirements **for the specifications** of security
-methods, for each of the four security aspects covered by this document. This
-means that you must read this chapter **only if you want to design a new
-method** of handling a certain EWP security aspect.
+This section describes requirements for the **writing specifications** of
+security methods, for each of the four security aspects covered by this
+document. This means that you must read this chapter only if you want to
+*design a new method* of handling a certain EWP security aspect.
 
 These requirements apply also to the standard methods mentioned above (the
 specifications of all standard methods MUST meet these requirements).
