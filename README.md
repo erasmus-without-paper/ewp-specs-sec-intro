@@ -20,6 +20,48 @@ to be a disputable choice, and a new major version of this document (2.x.x)
 will be introduced in the near future.
 
 
+Scope of this document
+----------------------
+
+It's important to understand, that each API decides of its own security options
+independently.
+
+ * Some APIs MAY require specific security protocols to be used. These APIs MAY
+   refer to some of the "standard method" documents (described in separate EWP
+   specifications), but they also MAY require implementers to follow some other
+   protocols, not described in this document, nor any other EWP document.
+
+ * If an API decides to follow security rules described in this document (or
+   any other document), then it MUST state this explicitly. In other words,
+   mere existence of this document in EWP specifications, does NOT imply that
+   the following requirements must be satisfied by the implementers of all EWP
+   APIs.
+
+ * EWP designers MAY release new major versions of this document. Such new
+   versions will not be compatible with the previous ones. That why it is very
+   important for all APIs to explicitly state which *major* version of this
+   document it follows.
+
+Examples of statements which should appear in the specification of independent
+APIs:
+
+ - *For all endpoints of this API, implementers MUST follow the rules
+   described in [EWP Authentication and Security, Version 1][sec-v1]
+   document.*
+
+ - *For all endpoints of this API, clients MUST authenticate the servers with
+   the [TLS Server Certificate method][srvauth-tlscert]. The servers are
+   REQUIRED to [not validate the client][cliauth-none] (all clients MUST be
+   allowed to access this API).*
+
+This last statement implies, that such API is NOT following the requirements of
+*Authentication and Security* document, but instead it requires the
+implementers to follow the requirements of specific server and client
+authentication methods (as described in their own repositories). Since nothing
+is stated about encryption, it implies that regular TLS encryption is
+sufficient.
+
+
 Security Aspects
 ----------------
 
@@ -195,3 +237,5 @@ For these reasons:
 [srvauth-httpsig]: https://github.com/erasmus-without-paper/ewp-specs-sec-srvauth-httpsig
 [reqencr-tls]: https://github.com/erasmus-without-paper/ewp-specs-sec-reqencr-tls
 [resencr-tls]: https://github.com/erasmus-without-paper/ewp-specs-sec-resencr-tls
+[sec-v1]: https://github.com/erasmus-without-paper/ewp-specs-sec-intro/tree/stable-v1
+[sec-v2]: https://github.com/erasmus-without-paper/ewp-specs-sec-intro/tree/stable-v2
