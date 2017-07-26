@@ -5,6 +5,23 @@ This document describes all the changes made to the *Authentication and
 Security* document, starting from its first released version.
 
 
+1.1.0
+-----
+
+* New section added (named *"Scope of this document"*). It describes a new
+  requirement: Each API that wants to require its implementers to follow the
+  requirements of *Authentication and Security* document, MUST state this
+  fact explicitly in its own specification.
+
+* Clarified that - if an API wants to enable server implementers to allow
+  anonymous client authentication - then it SHOULD state that explicitly in
+  its own specification, and ot SHOULD introduce a new element in their
+  `manifest-entry.xsd` (which will enable clients to detect that anonymous
+  requests are supported).
+
+* Fix spelling mistakes and style.
+
+
 1.0.0
 -----
 
