@@ -314,7 +314,7 @@ In all following examples:
  * The `sec` prefix is bound to the
    `https://github.com/erasmus-without-paper/ewp-specs-sec-intro/tree/stable-v2`
    namespace, as declared in [`schema.xsd`](schema.xsd) file.
-  
+
  * The `<http-security>` element is in an unknown namespace (because it is
    irrelevant in this context), but its data type is `sec:HttpSecurityOptions`.
 
@@ -387,7 +387,7 @@ In this example, the server implementer states that:
 
  * It allows its endpoint(s) to be accessed by [anonymous
    clients][cliauth-none].
- 
+
  * It also allows its endpoint(s) to be accessed by clients who use [TLS Client
    Certificate Authentication][cliauth-tlscert], but the certificate they use
    MUST NOT be self-signed.
@@ -401,6 +401,35 @@ the server is returning a broader set of results for authenticated clients
 (while anonymous clients get only a small subset). All of this depends on the
 particular API with which this example `<http-security>` element is used along
 with.
+
+
+### Example 3
+
+```xml
+<http-security>
+    <sec:client-auth-methods>
+        <tlscert
+            xmlns="https://github.com/erasmus-without-paper/ewp-specs-sec-cliauth-tlscert/tree/stable-v1"
+            allows-self-signed="true"
+        />
+        <httpsig xmlns="https://github.com/erasmus-without-paper/ewp-specs-sec-cliauth-httpsig/tree/stable-v1"/>
+    </sec:client-auth-methods>
+    <sec:server-auth-methods>
+        <tlscert xmlns="https://github.com/erasmus-without-paper/ewp-specs-sec-srvauth-tlscert/tree/stable-v1"/>
+        <httpsig xmlns="https://github.com/erasmus-without-paper/ewp-specs-sec-srvauth-httpsig/tree/stable-v1"/>
+    </sec:server-auth-methods>
+</http-security>
+```
+
+In this example, the server states that:
+
+ * It supports client authentication via both [TLS Certificate][cliauth-tlscert]
+   and [HTTP Signature][cliauth-httpsig]. This means that the client can freely
+   choose which one of those it wants to use.
+
+ * Similarly, it supports server authentication with two methods. This means
+   that the client MAY ask the server to sign its response with an additional
+   [HTTP Signature][srvauth-httpsig], and the server will honor such request.
 
 
 ### More examples coming soon
