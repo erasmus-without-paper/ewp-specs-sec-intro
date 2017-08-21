@@ -5,6 +5,13 @@ This document describes all the changes made to the *Authentication and
 Security* document, starting from its first released version.
 
 
+2.0.1
+-----
+
+* Added a more complex example of `sec:HttpSecurityOptions` usage, with
+  multiple authentication methods.
+
+
 2.0.0
 -----
 
