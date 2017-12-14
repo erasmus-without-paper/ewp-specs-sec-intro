@@ -5,6 +5,13 @@ This document describes all the changes made to the *Authentication and
 Security* document, starting from its first released version.
 
 
+2.0.2
+-----
+
+* Added `processContents="lax"` to all `<xs:any>` elements. This is needed in
+  order for parsers to accept custom security methods.
+
+
 2.0.1
 -----
 
