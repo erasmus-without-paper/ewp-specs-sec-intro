@@ -175,7 +175,7 @@ API's `manifest-entry.xsd` file.
    now), in the [`schema.xsd`](schema.xsd) file.
 
 
-### Are there and "default" values?
+### Are there any "default" values?
 
 Yes, `HttpSecurityOptions` data type makes use of some defaults (see
 [`schema.xsd`](schema.xsd) file for details).
